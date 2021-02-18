@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:chopper/chopper.dart';
+import 'package:movies/models/airline_list.dart';
 import 'package:movies/models/popular.dart';
 
 class ModelConverter implements Converter {
@@ -36,8 +37,9 @@ class ModelConverter implements Converter {
     }
     try {
       var mapData = json.decode(body);
-      var popular = Popular.fromJson(mapData);
-      return response.copyWith<BodyType>(body: popular as BodyType);
+      // var popular = Popular.fromJson(mapData);
+      var result = AirlineList.fromJson(mapData);
+      return response.copyWith<BodyType>(body: result as BodyType);
     } catch (e) {
       chopperLogger.warning(e);
       return response.copyWith<BodyType>(body: body);
