@@ -20,11 +20,9 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
-import 'package:movies/service/airlines_service.dart';
-import 'package:movies/service/movie_service.dart';
+import 'package:movies/service/api_service.dart';
 import 'package:movies/ui/airline_listings.dart';
 import 'package:logging/logging.dart';
-import 'package:movies/ui/movie_listings.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -46,8 +44,8 @@ class MyApp extends StatelessWidget {
     return Provider(
       // create: (_) => MovieService.create(),
       // dispose: (_, MovieService service) => service.client.dispose(),
-      create: (_) => AirlinesService.create(),
-      dispose: (_, AirlinesService service) => service.client.dispose(),
+      create: (_) => APIService.create(),
+      dispose: (_, APIService service) => service.client.dispose(),
       child: MaterialApp(
         title: 'Simple Listings',
         debugShowCheckedModeBanner: false,

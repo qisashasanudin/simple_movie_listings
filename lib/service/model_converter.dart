@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:chopper/chopper.dart';
-import 'package:movies/models/airline_list.dart';
-import 'package:movies/models/popular.dart';
+import 'package:movies/models/fetched_data_list.dart';
 
 class ModelConverter implements Converter {
   @override
@@ -37,8 +36,7 @@ class ModelConverter implements Converter {
     }
     try {
       var mapData = json.decode(body);
-      // var popular = Popular.fromJson(mapData);
-      var result = AirlineList.fromJson(mapData);
+      var result = FetchedDataList.fromJson(mapData);
       return response.copyWith<BodyType>(body: result as BodyType);
     } catch (e) {
       chopperLogger.warning(e);

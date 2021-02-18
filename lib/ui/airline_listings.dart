@@ -22,8 +22,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:chopper/chopper.dart';
-import 'package:movies/models/airline_list.dart';
-import 'package:movies/service/airlines_service.dart';
+import 'package:movies/models/fetched_data_list.dart';
+import 'package:movies/service/api_service.dart';
 import 'package:provider/provider.dart';
 
 class AirlineListings extends StatefulWidget {
@@ -43,10 +43,10 @@ class _AirlineListingsState extends State<AirlineListings> {
   }
 
 // 1
-  FutureBuilder<Response<AirlineList>> _buildBody(BuildContext context) {
-    return FutureBuilder<Response<AirlineList>>(
+  FutureBuilder<Response<FetchedDataList>> _buildBody(BuildContext context) {
+    return FutureBuilder<Response<FetchedDataList>>(
       // 2
-      future: Provider.of<AirlinesService>(context).getAirlines(),
+      future: Provider.of<APIService>(context).getAirlines(),
       builder: (context, snapshot) {
         // 3
         if (snapshot.connectionState == ConnectionState.done) {
@@ -75,7 +75,7 @@ class _AirlineListingsState extends State<AirlineListings> {
     );
   }
 
-  ListView _buildList(BuildContext context, AirlineList list) {
+  ListView _buildList(BuildContext context, FetchedDataList list) {
     // 1
     return ListView.builder(
       // 2

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'airline_list.dart';
+part of 'fetched_data_list.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AirlineList _$AirlineListFromJson(Map<String, dynamic> json) {
-  return AirlineList(
+FetchedDataList _$FetchedDataListFromJson(Map<String, dynamic> json) {
+  return FetchedDataList(
     message: json['message'] as String,
     result: (json['result'] as List)
         ?.map((e) =>
@@ -17,7 +17,7 @@ AirlineList _$AirlineListFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AirlineListToJson(AirlineList instance) =>
+Map<String, dynamic> _$FetchedDataListToJson(FetchedDataList instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
