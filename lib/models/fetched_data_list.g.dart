@@ -11,7 +11,7 @@ FetchedDataList _$FetchedDataListFromJson(Map<String, dynamic> json) {
     message: json['message'] as String,
     result: (json['result'] as List)
         ?.map((e) =>
-            e == null ? null : Airline.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Airport.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
   );

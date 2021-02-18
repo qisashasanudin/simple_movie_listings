@@ -42,15 +42,11 @@ class _ListingsState extends State<Listings> {
     );
   }
 
-// 1
   FutureBuilder<Response<FetchedDataList>> _buildBody(BuildContext context) {
     return FutureBuilder<Response<FetchedDataList>>(
-      // 2
-      future: Provider.of<APIService>(context).getAirlines(),
+      future: Provider.of<APIService>(context).getAirports(),
       builder: (context, snapshot) {
-        // 3
         if (snapshot.connectionState == ConnectionState.done) {
-          // 4
           if (snapshot.hasError) {
             return Center(
               child: Text(
@@ -60,13 +56,9 @@ class _ListingsState extends State<Listings> {
               ),
             );
           }
-          // 5
           final list = snapshot.data.body;
-          // 6
           return _buildList(context, list);
         } else {
-          // 7
-          // Show a loading indicator while waiting for the movies
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -76,7 +68,6 @@ class _ListingsState extends State<Listings> {
   }
 
   Widget _buildList(BuildContext context, FetchedDataList list) {
-    // 1
     return Column(
       children: [
         Padding(
@@ -85,11 +76,9 @@ class _ListingsState extends State<Listings> {
         ),
         Expanded(
           child: ListView.builder(
-            // 2
             itemCount: list.result.length,
             padding: EdgeInsets.all(8),
             itemBuilder: (context, index) {
-              // 3
               return Card(
                 elevation: 4,
                 child: Padding(
@@ -100,17 +89,7 @@ class _ListingsState extends State<Listings> {
                       Expanded(
                         child: Column(
                           children: <Widget>[
-                            // 5
                             Text(
-                              list.result[index].airlineCode,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-
-                            Text(
-                              // 6
                               list.result[index].name,
                               style: TextStyle(fontSize: 12),
                             ),

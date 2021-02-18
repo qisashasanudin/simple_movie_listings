@@ -16,6 +16,9 @@ abstract class APIService extends ChopperService {
   @Get(path: 'ticket/flight/airline')
   Future<Response<FetchedDataList>> getAirlines();
 
+  @Get(path: 'ticket/flight/airport')
+  Future<Response<FetchedDataList>> getAirports();
+
   // 8
   static APIService create() {
     // 9

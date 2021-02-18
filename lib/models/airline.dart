@@ -10,7 +10,6 @@ class Airline {
   // 5
   @JsonKey(name: 'airline_code')
   String airlineCode;
-  @JsonKey(name: 'name')
   String name;
 
   // 6
