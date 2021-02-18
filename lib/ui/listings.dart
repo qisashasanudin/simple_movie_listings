@@ -26,12 +26,12 @@ import 'package:movies/models/fetched_data_list.dart';
 import 'package:movies/service/api_service.dart';
 import 'package:provider/provider.dart';
 
-class AirlineListings extends StatefulWidget {
+class Listings extends StatefulWidget {
   @override
-  _AirlineListingsState createState() => _AirlineListingsState();
+  _ListingsState createState() => _ListingsState();
 }
 
-class _AirlineListingsState extends State<AirlineListings> {
+class _ListingsState extends State<Listings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,46 +75,56 @@ class _AirlineListingsState extends State<AirlineListings> {
     );
   }
 
-  ListView _buildList(BuildContext context, FetchedDataList list) {
+  Widget _buildList(BuildContext context, FetchedDataList list) {
     // 1
-    return ListView.builder(
-      // 2
-      itemCount: list.result.length,
-      padding: EdgeInsets.all(8),
-      itemBuilder: (context, index) {
-        // 3
-        return Card(
-          elevation: 4,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: Column(
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('${list.status}: ${list.message}'),
+        ),
+        Expanded(
+          child: ListView.builder(
+            // 2
+            itemCount: list.result.length,
+            padding: EdgeInsets.all(8),
+            itemBuilder: (context, index) {
+              // 3
+              return Card(
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      // 5
-                      Text(
-                        list.result[index].airlineCode,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            // 5
+                            Text(
+                              list.result[index].airlineCode,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
 
-                      Text(
-                        // 6
-                        list.result[index].name,
-                        style: TextStyle(fontSize: 12),
-                      ),
+                            Text(
+                              // 6
+                              list.result[index].name,
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
-                )
-              ],
-            ),
+                ),
+              );
+            },
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 }

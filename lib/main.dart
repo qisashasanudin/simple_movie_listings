@@ -21,7 +21,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:movies/service/api_service.dart';
-import 'package:movies/ui/airline_listings.dart';
+import 'package:movies/ui/listings.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
@@ -42,8 +42,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      // create: (_) => MovieService.create(),
-      // dispose: (_, MovieService service) => service.client.dispose(),
       create: (_) => APIService.create(),
       dispose: (_, APIService service) => service.client.dispose(),
       child: MaterialApp(
@@ -52,8 +50,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        // home: MovieListings(),
-        home: AirlineListings(),
+        home: Listings(),
       ),
     );
   }
